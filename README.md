@@ -1,33 +1,32 @@
 ﻿# Description
 
-Insert a useful description for the ResolveString project here.
+Module to implement string mappings and inserting values into strings.
 
-Remember, it's the first thing a visitor will see.
+## Installation
 
-# Project Setup Instructions
-## Working with the layout
+To install the module from the PSGallery, run:
 
- - Don't touch the psm1 file
- - Place functions you export in `functions/` (can have subfolders)
- - Place private/internal functions invisible to the user in `internal/functions` (can have subfolders)
- - Don't add code directly to the `postimport.ps1` or `preimport.ps1`.
-   Those files are designed to import other files only.
- - When adding files you load during `preimport.ps1`, be sure to add corresponding entries to `filesBefore.txt`.
-   The text files are used as reference when compiling the module during the build script.
- - When adding files you load during `postimport.ps1`, be sure to add corresponding entries to `filesAfter.txt`.
-   The text files are used as reference when compiling the module during the build script.
+```powershell
+Install-Module ResolveString
+```
 
-## Setting up CI/CD
+## Examples
 
-> To create a PR validation pipeline, set up tasks like this:
+```powershell
+# Register a new mapping
+Register-StringMapping -Name '%Date%' -Value (Get-Date -Format 'yyyy-MM-dd') -ModuleName MyModule
 
- - Install Prerequisites (PowerShell Task; VSTS-Prerequisites.ps1)
- - Validate (PowerShell Task; VSTS-Validate.ps1)
- - Publish Test Results (Publish Test Results; NUnit format; Run no matter what)
+# Resolve a string based on the available mappings
+Resolve-String -Text 'Today is the date %Date%, it is going to be awesome' -ModuleName MyModule
+```
 
-> To create a build/publish pipeline, set up tasks like this:
+> Note: The ModuleName parameter is optional and will automatically insert the caller's module name.
+It is only specified in order to be able to run the demo code interactively.
 
- - Install Prerequisites (PowerShell Task; VSTS-Prerequisites.ps1)
- - Validate (PowerShell Task; VSTS-Validate.ps1)
- - Build (PowerShell Task; VSTS-Build.ps1)
- - Publish Test Results (Publish Test Results; NUnit format; Run no matter what)
+```powershell
+# Register a new mapping, the value of which will be calculated at resolution time
+Register-StringMapping -Name '%Date%' -Scriptblock { Get-Date -Format 'yyyy-MM-dd' } -ModuleName MyModule
+
+# Resolve a string based on the available mappings, inserting the dynamically calculated date
+Resolve-String -Text 'Today is the date %Date%, it is going to be awesome' -ModuleName MyModule
+```
