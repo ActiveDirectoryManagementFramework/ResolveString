@@ -15,6 +15,8 @@ Write-PSFMessage -Level Important -Message "Starting Tests"
 
 Write-PSFMessage -Level Important -Message "Importing Module"
 
+$global:testroot = $PSScriptRoot
+
 Remove-Module ResolveString -ErrorAction Ignore
 Import-Module "$PSScriptRoot\..\ResolveString.psd1"
 Import-Module "$PSScriptRoot\..\ResolveString.psm1" -Force
@@ -35,7 +37,7 @@ if ($TestGeneral)
 	{
 		Write-PSFMessage -Level Significant -Message "  Executing <c='em'>$($file.Name)</c>"
 		$TestOuputFile = Join-Path "$PSScriptRoot\..\..\TestResults" "TEST-$($file.BaseName).xml"
-    $results = Invoke-Pester -Script $file.FullName -Show $Show -PassThru -OutputFile $TestOuputFile -OutputFormat NUnitXml
+    	$results = Invoke-Pester -Script $file.FullName -Show $Show -PassThru -OutputFile $TestOuputFile -OutputFormat NUnitXml
 		foreach ($result in $results)
 		{
 			$totalRun += $result.TotalCount
@@ -66,7 +68,7 @@ Write-PSFMessage -Level Important -Message "Proceeding with individual tests"
 		
 		Write-PSFMessage -Level Significant -Message "  Executing $($file.Name)"
 		$TestOuputFile = Join-Path "$PSScriptRoot\..\..\TestResults" "TEST-$($file.BaseName).xml"
-    $results = Invoke-Pester -Script $file.FullName -Show $Show -PassThru -OutputFile $TestOuputFile -OutputFormat NUnitXml
+    	$results = Invoke-Pester -Script $file.FullName -Show $Show -PassThru -OutputFile $TestOuputFile -OutputFormat NUnitXml
 		foreach ($result in $results)
 		{
 			$totalRun += $result.TotalCount

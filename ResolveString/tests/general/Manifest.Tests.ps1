@@ -1,5 +1,5 @@
 ﻿Describe "Validating the module manifest" {
-	$moduleRoot = (Resolve-Path "$PSScriptRoot\..\..").Path
+	$moduleRoot = (Resolve-Path "$global:testroot\..").Path
 	$manifest = ((Get-Content "$moduleRoot\ResolveString.psd1") -join "`n") | Invoke-Expression
 	Context "Basic resources validation" {
 		$files = Get-ChildItem "$moduleRoot\functions" -Recurse -File | Where-Object Name -like "*.ps1"

@@ -8,7 +8,7 @@
 
 $moduleRoot = (Get-Module ResolveString).ModuleBase
 $stringsResults = Export-PSMDString -ModuleRoot $moduleRoot
-$exceptions = & "$PSScriptRoot\strings.Exceptions.ps1"
+$exceptions = & "$global:testroot\general\strings.Exceptions.ps1"
 
 Describe "Testing localization strings" {
     foreach ($stringEntry in $stringsResults) {

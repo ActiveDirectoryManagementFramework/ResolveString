@@ -36,13 +36,13 @@ Param (
 	$SkipTest,
 	
 	[string[]]
-	$CommandPath = @("$PSScriptRoot\..\..\functions", "$PSScriptRoot\..\..\internal\functions"),
+	$CommandPath = @("$global:testroot\..\functions", "$global:testroot\..\internal\functions"),
 	
 	[string]
 	$ModuleName = "ResolveString",
 	
 	[string]
-	$ExceptionsFile = "$PSScriptRoot\Help.Exceptions.ps1"
+	$ExceptionsFile = "$global:testroot\general\Help.Exceptions.ps1"
 )
 if ($SkipTest) { return }
 . $ExceptionsFile

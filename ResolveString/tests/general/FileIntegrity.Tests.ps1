@@ -1,6 +1,6 @@
-﻿$moduleRoot = (Resolve-Path "$PSScriptRoot\..\..").Path
+﻿$moduleRoot = (Resolve-Path "$global:testroot\..").Path
 
-. "$PSScriptRoot\FileIntegrity.Exceptions.ps1"
+. "$global:testroot\general\FileIntegrity.Exceptions.ps1"
 
 function Get-FileEncoding
 {
