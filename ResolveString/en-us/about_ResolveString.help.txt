@@ -1,0 +1,11 @@
+﻿TOPIC
+	about_ResolveString
+	
+SHORT DESCRIPTION
+	Explains how to use the ResolveString powershell module
+	
+LONG DESCRIPTION
+	<Insert Content here>
+
+KEYWORDS
+	ResolveString
