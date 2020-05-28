@@ -16,6 +16,7 @@ Write-PSFMessage -Level Important -Message "Starting Tests"
 Write-PSFMessage -Level Important -Message "Importing Module"
 
 $global:testroot = $PSScriptRoot
+$global:__pester_data = @{ }
 
 Remove-Module ResolveString -ErrorAction Ignore
 Import-Module "$PSScriptRoot\..\ResolveString.psd1"
