@@ -43,6 +43,7 @@
 
 		Resolves the string stored in $path, providing the content of variable $parameters as argument to any scriptblock being executed as part of the resolution.
 	#>
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '')]
 	[OutputType([string])]
 	[CmdletBinding()]
 	Param (
