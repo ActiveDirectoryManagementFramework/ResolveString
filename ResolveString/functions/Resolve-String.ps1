@@ -25,7 +25,7 @@
 	.PARAMETER ArgumentList
 		Any arguments to send to any insertion scriptblock.
 		Using Register-StringMapping, you can either assign a static value to an insertion tag, or you can offer a scriptblock.
-		When storing a scriptblock, it will be executed at runtime, receiving the string it was matched to and these arguments as arguments.		
+		When storing a scriptblock, it will be executed at runtime, receiving the string it was matched to and these arguments as arguments.
 
 	.PARAMETER ModuleName
 		The name of the module to operate for.
@@ -43,6 +43,8 @@
 
 		Resolves the string stored in $path, providing the content of variable $parameters as argument to any scriptblock being executed as part of the resolution.
 	#>
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '')]
+	[OutputType([string])]
 	[CmdletBinding()]
 	Param (
 		[Parameter(ValueFromPipeline = $true)]

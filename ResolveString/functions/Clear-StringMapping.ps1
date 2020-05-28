@@ -15,9 +15,9 @@
 		Use this parameter to override the automatic detection.
 	
 	.EXAMPLE
-		PS C:\> Clear-StringMapping
+		PS C:\> Clear-StringMapping -Module MyModule
 
-		Clears all string mappings for the current module.
+		Clears all string mappings for the MyModule module.
 	#>
 	[CmdletBinding()]
 	Param (

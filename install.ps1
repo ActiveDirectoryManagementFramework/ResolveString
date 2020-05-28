@@ -45,7 +45,7 @@ Param (
 $ModuleName = "ResolveString"
 
 # Base path to the github repository
-$BaseUrl = "https://github.com/<InsertUsernameHere>/ResolveString"
+$BaseUrl = "https://github.com/FriedrichWeinmann/ResolveString"
 
 # If the module is in a subfolder of the cloned repository, specify relative path here. Empty string to skip.
 $SubFolder = "ResolveString"
