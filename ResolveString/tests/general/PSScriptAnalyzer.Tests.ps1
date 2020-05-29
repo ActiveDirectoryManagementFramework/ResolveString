@@ -9,7 +9,7 @@ Param (
 
 if ($SkipTest) { return }
 
-$global:__pester_data.List = New-Object System.Collections.ArrayList
+$global:__pester_data.ScriptAnalyzer = New-Object System.Collections.ArrayList
 
 Describe 'Invoking PSScriptAnalyzer against commandbase' {
 	$commandFiles = Get-ChildItem -Path $CommandPath -Recurse | Where-Object Name -like "*.ps1"
@@ -25,7 +25,7 @@ Describe 'Invoking PSScriptAnalyzer against commandbase' {
 				It "Should pass $rule" -TestCases @{ analysis = $analysis; rule = $rule } {
 					If ($analysis.RuleName -contains $rule)
 					{
-						$analysis | Where-Object RuleName -EQ $rule -outvariable failures | ForEach-Object { $null = $global:__pester_data.List.Add($_) }
+						$analysis | Where-Object RuleName -EQ $rule -outvariable failures | ForEach-Object { $null = $global:__pester_data.ScriptAnalyzer.Add($_) }
 						
 						1 | Should -Be 0
 					}
@@ -38,5 +38,3 @@ Describe 'Invoking PSScriptAnalyzer against commandbase' {
 		}
 	}
 }
-
-$global:__pester_data.List | Out-Default
